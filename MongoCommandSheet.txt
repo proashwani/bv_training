@@ -1,0 +1,52 @@
+## For Help 
+db.help
+
+## To Show all avaliable dbs
+show dbs
+## To select a database
+use <dbName>
+
+## To delete / drop a database, make sure you have selected the database and then do this
+db.dropDatabase()
+
+## To see the collections in a databases
+show collections
+or db.getCollectionNames()
+
+## To create documents in a collection
+db.comedyCollection.insert({name:"Hera Pheri", year:2000})
+db.comedyCollection.insert({name:"Phir Hera Pheri", year:2006})
+db.comedyCollection.save({name:"Golmal", year:2006})
+db.comedyCollection.save({name:"Golmal Returns", year:2008})
+db.comedyCollection.save({name:"Golmal Returns", year:2008})
+
+## To read data from a collection
+db.comedyCollection.find()
+
+## To Drop collection
+db.collection.drop()
+
+## To limit it to just two
+db.comedyCollection.find().limit(2)
+
+## Similar to using find().limit(1), there is a function called findOne(), which will get you only one document in the result.
+db.comedyCollection.findOne()
+
+db.comedyCollection.find({year:{$lt:2006}})
+db.comedyCollection.find({year:2000})
+
+## What if you want to get all, except some fields in the result?
+db.comedyCollection.find({year:{'$lt':2008}}, {name:false})
+
+### Import a json file as a collection 
+mongoimport --db test --collection restaurants --drop --file <path>/<fileName>.json
+
+### To count no of records in collections
+db.getCollection('restaurants').count();
+
+### Find Query where cuisine = "IRISH"
+db.getCollection('restaurants').find({"cuisine" : "Irish"})
+
+### To delete document for Collections
+db.comedyCollection.remove({"name" : "Golmal"})
+
